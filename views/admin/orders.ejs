@@ -1,0 +1,116 @@
+<%- include('../partials/adminheader'); -%>
+
+    <section class="orders light-section">
+
+        <div class="container mx-auto pt-12">
+            <h1 class="mb-4">All Orders</h1>
+
+            <table class="table table-hover table-auto table-bordered">
+                <thead class="text-center">
+                    <tr>
+                        <th>Customer</th>
+                        <th>Orders</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+
+                        <th>Status</th>
+                        <th>Payment Type</th>
+                        <th>Placed at</th>
+
+
+                    </tr>
+                </thead>
+                <!-- id="orderTableBody" -->
+                <tbody >
+                    <% if (orders.length) { %>
+                        <% orders.forEach(function(order){ %>
+
+                            <tr>
+                                <td class="border">
+                                    <%=order.customerId.username%>
+                                </td>
+
+                                <td class="border">
+                                    <% order.items.forEach(function(item){%>
+                                        <ul class="address">
+                                            <li>
+                                                <h5 class="td">
+                                                    <%=item.title%>
+                                                </h5>
+                                            </li>
+                                            <ul class="mt-2 address">
+                                                <li>Quantity : <%=item.qty%>
+                                                </li>
+                                                <li>Price : Rs. <%=item.price%></li>
+                                                <li>Total Price : Rs. <%=item.qty * item.price %>
+                                                </li>
+                                                <li><img src="<%=item.image%>" class="img-responsive order-image"
+                                                        alt=""></li>
+
+                                            </ul>
+                                            <hr>
+                                        </ul>
+                                        <% }) %>
+                                </td>
+
+
+                                <td class="border ">
+                                    <ul class="address">
+                                        <li> Orders Name: <%=order.name%></li>
+                                        <li>
+                                            <%=order.address%>
+                                        </li>
+                                        <li>Landmark: <span>
+                                                <%=order.landmark%>
+                                            </span></li>
+                                        <li>Town: <span>
+                                                <%=order.town%>
+                                            </span></li>
+                                    </ul>
+                                </td>
+
+                                <td class="border">
+                                    <%=order.phone%>
+                                </td>
+                                <td class="border">
+
+                                    <form action="/admin/orders/status" method="POST">
+                                        <input type="hidden" name="orderId" value="<%=order._id%>">
+                                        <select class="form-select form-select-lg select" aria-label="Default select example" name="status"
+                                            onchange="this.form.submit()">
+                                            <option value="order_placed" <%= order.status === 'order_placed' ? 'selected':'' %> >Placed</option>
+                                            <option value="confirmed" <%= order.status=== 'confirmed' ? 'selected' : '' %> >Confirmed</option>
+                                            <option value="prepared" <%= order.status === 'prepared' ? 'selected' :  '' %>  >Prepared</option>
+                                            <option value="delivered" <%= order.status === 'delivered' ? 'selected' : '' %> >Delivered</option>
+                                            <option value="completed" <%= order.status === 'completed' ? 'selected' : '' %> >Completed</option>
+                                        </select>
+                                    </form>
+                                </td>
+                               <td class="border"><%=order.paymentType%></td>
+                                <td class="border">
+                                    <%= moment(order.createdAt).format('LLLL') %>
+                                </td>
+
+                            </tr>
+
+                            <% }) %>
+
+                                <% }else{ %>
+
+                                    <tr>
+                                        <td class="p-4"><span>No Orders found!</span></td>
+                                    </tr>
+
+                                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+
+
+
+    <%- include('../partials/adminfooter'); -%>

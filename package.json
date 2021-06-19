@@ -1,0 +1,38 @@
+{
+  "name": "cart",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajax": "0.0.4",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.2",
+    "express-validate": "0.0.8",
+    "express-validator": "^5.3.1",
+    "file-upload": "0.0.0",
+    "fs-extra": "^10.0.0",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.12",
+    "noty": "^3.2.0-beta-deprecated",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "resize-img": "^2.0.0",
+    "slugify": "^1.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "description": ""
+}

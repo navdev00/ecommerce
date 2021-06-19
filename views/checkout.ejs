@@ -1,0 +1,245 @@
+<%-include('partials/header');-%>
+
+
+	<!--checkout-->
+
+
+	<% if(typeof cart !=="undefined" ){ %>
+
+
+
+		<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+			<div class="container">
+				<div class="inner-sec-shop px-lg-4 px-3">
+					<h3 class="tittle-w3layouts my-lg-4 mt-3">Checkout </h3>
+					<div class="checkout-right">
+						<h4>Your shopping cart contains:
+							<span></span>
+						</h4>
+
+
+
+
+						<table class="timetable_sub">
+							<thead>
+								<tr>
+
+									<th>Product Name</th>
+									<th>Product </th>
+									<th>Quantity</th>
+
+
+									<th>Price</th>
+									<th>Sub Total</th>
+
+									<th>Remove</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="rem1">
+
+									<% var total=0; %>
+
+										<% cart.forEach(function(product){ %>
+
+											<% var sub=product.qty*product.price%>
+												<% total+=sub%>
+
+													<td class="invert">
+														<%= product.title %>
+													</td>
+
+													<td class="invert-image">
+														<a href="">
+															<img src="<%=product.image%>" alt=" "
+																class="img-responsive">
+														</a>
+													</td>
+
+													<td class="invert">
+														<div class="quantity">
+															<div class="quantity-select">
+																<a href="/cart/update/<%=product.title%>?action=remove">
+																	<div class="entry value-minus">&nbsp;</div>
+																</a>
+																<div class="entry value">
+																	<span>
+																		<%=product.qty%>
+																	</span>
+																</div>
+																<a href="/cart/update/<%=product.title%>?action=add">
+																	<div class="entry value-plus active "></div>&nbsp;
+																</a>
+															</div>
+														</div>
+													</td>
+
+													<td class="invert">Rs. <%=product.price%>
+													</td>
+													<td class="invert">Rs. <%=sub%>
+													</td>
+
+													<td class="invert">
+														<div class="rem">
+															<a href="/cart/update/<%=product.title%>?action=clear">
+																<div class="close1"> </div>
+															</a>
+														</div>
+
+													</td>
+
+
+
+
+
+													<!-- <td class="invert">Irayz Butterfly </td> -->
+
+								</tr>
+								<% }) %>
+
+
+							</tbody>
+						</table>
+
+						<div class="text-right mt-5">
+							<a href="/cart/clear"
+								onclick="return confirm('Are you sure you want to delete Cart items?') "
+								class="btn btn-danger mr-2">Clear Cart</a>
+							<!-- <a href="#" class="btn btn-primary">Buy Now</a> -->
+						</div>
+
+
+
+
+
+					</div>
+
+
+
+
+
+					<div class="checkout-left row">
+
+						<div class="col-md-4 checkout-left-basket">
+							<h4>Continue to basket</h4>
+							<ul>
+								<% cart.forEach(function(product){ %>
+
+									<!-- <% var sub=product.qty*product.price%> -->
+
+									<li>
+										<%=product.title%>
+											<i>-</i>
+											<span>Rs.<%=sub%> </span>
+									</li>
+
+
+									<% }) %>
+
+							</ul>
+							<hr>
+							<h5 class="text-right">
+
+								<b>Total</b>
+								<i></i>
+								<span><b></b> Rs.<%=total%></span>
+
+							</h5>
+
+
+
+
+
+
+						</div>
+
+
+
+
+						<div class="col-md-8 address_form">
+							<h4 class="text-center">Add a new Details</h4>
+							<form action="/order" method="post" class="creditly-card-form agileinfo_form">
+								<section class="creditly-wrapper wrapper">
+									<div class="information-wrapper">
+										<div class="first-row form-group">
+											<div class="controls">
+												<label class="control-label">Full name: </label>
+												<input class="billing-address-name form-control" type="text" name="name"
+													placeholder="Full name">
+											</div>
+											<div class="card_number_grids">
+												<div class="card_number_grid_left">
+													<div class="controls">
+														<label class="control-label">Mobile number:</label>
+														<input class="form-control" type="text" name='phone'
+															placeholder="Mobile number">
+													</div>
+												</div>
+												<div class="card_number_grid_right">
+													<div class="controls">
+														<label class="control-label">Landmark: </label>
+														<input class="form-control" type="text" placeholder="Landmark" name='landmark'>
+													</div>
+												</div>
+												<div class="clear"> </div>
+											</div>
+											<div class="controls">
+												<label class="control-label">Town/City: </label>
+												<input class="form-control" type="text" placeholder="Town/City" name='town'>
+											</div>
+											<div class="controls">
+												<label class="control-label">Address: </label>
+												<input class="form-control" type="text" placeholder="Address" name='address'>
+									
+											</div>
+										</div>
+										<div class="">
+											<% if(user){ %>
+												<button class="submit check_out">Delivery to this Address</button>
+												<% }else{ %>
+													<button class="submit check_out"><a href="/users/login">Login to
+															continue</a></button>
+													<% } %>
+	
+										</div>
+									
+
+
+									</div>
+								</section>
+							</form>
+							<!-- <div class="checkout-right-basket">
+								<a href="payment.html">Make a Payment </a>
+							</div> -->
+						</div>
+
+						<div class="clearfix"> </div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!--//checkout-->
+
+
+		<% } else{ %>
+
+
+			<div class="container mx-auto">
+
+				<h3 class="text-center my-10">Your Shopping Cart is Empty</h3>
+				<img class="" src="/img/empty.gif" alt="">
+
+			</div>
+
+
+
+
+
+
+			<% } %>
+
+
+				<%- include('partials/footer'); -%>

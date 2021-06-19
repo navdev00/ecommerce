@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600&display=swap');
+/* font-family: 'Baloo Tammudu 2', cursive; */
+/* font-family: 'Baloo Tammudu 2', cursive; */
+
+
+
+
+body{
+   
+    font-family: 'Baloo Tammudu 2', cursive;
+    
+}
+
+#imgPreview{
+    margin: 20px;
+    width: 400px;
+    height: 350px;
+}
+
+#emptyImage{
+
+    width: 100px;
+    height: 100px;
+}
+
+ul.gallery{
+    padding: 0;
+}
+
+ul.gallery li:first-child{
+    margin-left: 0;
+}
+
+ul.gallery li{
+    margin: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+.order-image{
+    width: 20%;
+   
+}
+.address{
+    list-style: none;
+}
+
+.select{
+    padding: 2px 40px;
+}

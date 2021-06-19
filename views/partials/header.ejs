@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Amazonia Ecommerce </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+	<!-- <script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script> -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/login_overlay.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style6.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="/css/shop.css" type="text/css" />
+	<link rel="stylesheet" href="/css/owl.carousel.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/css/owl.theme.css" type="text/css" media="all">
+
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui1.css">
+	<link href="/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/css/checkout.css">
+
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="/css/fontawesome-all.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+	<link
+		href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+		rel="stylesheet">
+	<!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+</head>
+
+<body>
+	<div class="banner-top container-fluid" id="home">
+		<!-- header -->
+		<header>
+			<div class="row">
+				<div class="col-md-3 top-info text-left mt-lg-4">
+
+					<ul>
+
+
+						<% if (!user){ %>
+
+							<li><a class="nav-link auth" href="/users/register">Register</a></li>
+							<li><a class="nav-link auth" href="/users/login">Login</a></li>
+
+							<% } %>
+
+
+
+
+
+					</ul>
+				</div>
+				<div class="col-md-6 logo-w3layouts text-center">
+					<h1 class="logo-w3layouts">
+						<a class="navbar-brand" href="/">
+							Amazonia </a>
+					</h1>
+				</div>
+
+				<div class="col-md-3 top-info-cart text-right mt-lg-4">
+					<ul class="cart-inner-info">
+
+						<li class="galssescart galssescart2 cart cart box_1">
+
+
+							<a href="/cart/checkout" class="cart btn btn-primary">
+									My Cart (
+										<% if (typeof cart !=="undefined" ){%>
+											<%= cart.length%>
+
+												<% }else{ %>
+													0
+													<% } %>
+									)
+									
+
+								</a>
+						
+
+
+						</li>
+						<% if (user){ %>
+							<li><a class="nav-link " >Hi,<%=user.username%> </a></li>
+							<li><a class="nav-link " href="/users/logout"> Logout</a></li>
+							<% } %>
+
+							<% if (user && user.admin==1){ %>
+							
+								<li><a class="nav-link " href="/admin/pages">Admin Area</a></li>
+								<% } %>
+
+					</ul>
+					<!---->
+
+					<!---->
+				</div>
+			</div>
+			<div class="search">
+				<div class="mobile-nav-button">
+					<button id="trigger-overlay" type="button">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+				<!-- open/close -->
+				<div class="overlay overlay-door">
+					<button type="button" class="overlay-close">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</button>
+					<form action="#" method="post" class="d-flex">
+						<input class="form-control" type="search" placeholder="Search here..." required="">
+						<button type="submit" class="btn btn-primary submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</form>
+
+				</div>
+				<!-- open/close -->
+			</div>
+			<!-- <label class="top-log mx-auto"></label> -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
+
+				<button class="navbar-toggler mx-auto" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+
+					</span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav nav-mega mx-auto">
+						<li class="nav-item active">
+							<a class="nav-link ml-lg-0" href="/">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/order/myorders">My Orders</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="" id="navbarDropdown1" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Category
+							</a>
+							<ul class="dropdown-menu mega-menu ">
+								<li>
+									<div class="row">
+										<div class="col-md-4 media-list span4 text-left">
+											<h5 class="tittle-w3layouts-sub"> Title </h5>
+											<ul>
+
+												<% categories.forEach(function(c){ %>
+
+													<li class="media-mini mt-3">
+														<a href="/<%=c.slug%>">
+															<%= c.title %>
+														</a>
+													</li>
+
+													<% }) %>
+
+
+											</ul>
+										</div>
+
+
+									</div>
+									<hr>
+								</li>
+							</ul>
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="">Contact</a>
+						</li> -->
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+		<!-- //header -->
+
+		<div class="container">
+			<%- messages('messages', locals) %>
+		</div>
+
+
+		<div class="container">
+
+			<% if (errors) { %>
+
+				<% errors.forEach(function(error) { %>
+
+					<div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+						<%=error.msg%>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+
+					<% }) %>
+
+						<% } %>
+
+		</div>

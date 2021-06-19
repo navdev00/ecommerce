@@ -1,0 +1,88 @@
+ 
+<%-include('../partials/adminheader'); -%>
+
+    <h2 class="text-center mt-2"> Add Product</h2>
+
+
+
+    <div class="container justify-content-center mb-5">
+        <a href="/admin/products" class="btn btn-primary mt-2 mb-4"> Back to Products</a>
+        <form action="/admin/products/add-product" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label for="">Product</label>
+                <input type="text" name="title" class="form-control" id="" placeholder="Enter Text"
+                    value="<%= title %>">
+
+            </div>
+            <div class="form-group">
+                <label for="">Price</label>
+                <input type="text" name="price" value="<%= price %>" class="form-control" id="" placeholder="Price">
+            </div>
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea class="form-control rounded-0" id="" value="<%= desc %>" rows="10" name="desc"> <%= desc %> </textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="">Category</label>
+                <select name="category"  class="form-control" id="">
+
+                    <% categories.forEach(function(cat){ %>
+
+                        <option value="<%= cat.slug %>"><%= cat.title %></option>
+
+                    <% }) %>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label for="">Image</label>
+                <input type="file" name="image" class="form-control" id="img" accept="image/*" onchange="previewImage();">
+                <img src="#" id="imgPreview" alt="" >
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+    <script>
+        
+   
+    // function previewImage() {
+    //     var img = document.getElementById("img").files;
+    //     if (img.length > 0) {
+    //         var fileReader = new FileReader();
+ 
+    //         fileReader.onload = function (event) {
+    //             document.getElementById("imgPreview").setAttribute("src", event.target.result);
+    //         };
+ 
+    //         fileReader.readAsDataURL(img[0]);
+    //     }
+    // }
+
+    function previewImage(){
+        var img = document.getElementById("img").files;
+        if (img.length > 0){
+            var fileReader = new FileReader();
+
+            fileReader.onload= function( event){
+                document.getElementById("imgPreview").setAttribute("src",event.target.result);
+
+            };
+
+            fileReader.readAsDataURL(img[0]);
+            
+        }
+    }
+
+
+    </script>
+
+
+
+
+    <%- include('../partials/adminfooter'); -%>

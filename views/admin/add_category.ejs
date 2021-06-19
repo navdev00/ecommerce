@@ -1,0 +1,28 @@
+
+<%-include('../partials/adminheader'); -%>
+
+<h2 class="text-center mt-5"> Add Category</h2>
+
+
+
+<div class="container justify-content-center">
+    <a href="/admin/categories" class="btn btn-primary mt-5 mb-5"> Back to categories</a>
+    <form action="/admin/categories/add-category" method="POST">
+        <div class="form-group">
+            <label for="">Category</label>
+            <input type="text" name="title" class="form-control" id="" 
+                placeholder="Enter Text"  value="<%= title %>">
+            
+        </div>
+        
+        
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+</div>
+
+
+
+
+<%- include('../partials/adminfooter'); -%>
