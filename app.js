@@ -172,7 +172,16 @@ app.use(function(req,res){
     res.status(404).render('errors/error')
 })
 
-app.listen(3000, function () {
-    console.log('server running');
+
+
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+
+app.listen(port, function () {
+    console.log('server has started successfully');
 });
 
